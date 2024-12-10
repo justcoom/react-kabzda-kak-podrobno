@@ -5,6 +5,7 @@ import {StyledBtn} from "./components/styles/Button.styled";
 import {Link} from "./components/styles/Link";
 import {SuperButton} from "./components/styles/SuperButton";
 import {Menu} from "./components/styles/Menu.styled";
+import {theme} from "./components/styles/Theme.styled";
 
 
 function sum(a: number, b: number) {
@@ -22,10 +23,12 @@ function App() {
                 </ul>
             </Menu>
             <Box>
-                <StyledBtn as={Link} href={"#"}>Linkew</StyledBtn>
-                <StyledBtn as={"a"} href={"#"}>Linkew</StyledBtn>
-                <StyledBtn>button :)</StyledBtn>
-                <SuperButton>sp button</SuperButton>
+                {/*<StyledBtn color="red" fontSize={"20px"}>Linkew</StyledBtn>*/}
+                {/*<StyledBtn color="green">Linkew</StyledBtn>*/}
+                {/*<StyledBtn fontSize={"30px"}>Linkew</StyledBtn>*/}
+
+                <StyledBtn color={theme.colors.primary} btnType={"primary"} active>Hello</StyledBtn>
+                <StyledBtn color={theme.colors.secondary} btnType={"outlined"}>Hello</StyledBtn>
             </Box>
         </div>
         // <div>
@@ -74,7 +77,7 @@ const Box = styled.div`
         cursor: zoom-in;
     }
     
-    @media screen and (max-width: 200px){
+    @media ${theme.media.tablet} {
         flex-direction: column;
     }
 `
