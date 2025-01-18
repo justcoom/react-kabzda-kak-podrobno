@@ -9,8 +9,7 @@ import {UncontrolledRating} from "./components/uncontrolledRating/UncontrolledRa
 function App() {
     console.log("App rendered")
     return (
-
-        <div>
+        <div className={"App"}>
             {/*<PageTitle title={"This is component"}/>*/}
             {/*<PageTitle title={"My friends"}/>*/}
 
@@ -31,9 +30,10 @@ function App() {
             <OnOff state={false}/>
 
             <UncontrolledAccordion titleValue={"Menu"}/>
-            <UncontrolledAccordion titleValue={"Users"}/>
+            <Accordion titleValue={"Users"} collapsed={false}/>
 
             <UncontrolledRating/>
+            <Rating value={4}/>
         </div>
     );
 }
