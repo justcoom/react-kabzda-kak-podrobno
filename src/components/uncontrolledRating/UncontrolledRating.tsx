@@ -10,11 +10,11 @@ export function UncontrolledRating(props: RatingPropsType) {
 
     return (
         <div>
-            <Star selected={selected > 0} callback={() => setSelected(1)}/>
-            <Star selected={selected > 1} callback={() => setSelected(2)}/>
-            <Star selected={selected > 2} callback={() => setSelected(3)}/>
-            <Star selected={selected > 3} callback={() => setSelected(4)}/>
-            <Star selected={selected > 4} callback={() => setSelected(5)}/>
+            <Star selected={selected > 0} callback={()=>setSelected(1)}/>
+            <Star selected={selected > 1} callback={()=>setSelected(2)}/>
+            <Star selected={selected > 2} callback={()=>setSelected(3)}/>
+            <Star selected={selected > 3} callback={()=>setSelected(4)}/>
+            <Star selected={selected > 4} callback={()=>setSelected(5)}/>
         </div>
     )
 
@@ -22,9 +22,9 @@ export function UncontrolledRating(props: RatingPropsType) {
 
 type StarPropsType = {
     selected: boolean
-    callback?: () => void
+    callback: () => void
 }
 
 function Star(props: StarPropsType) {
-    return props.selected ? <span onClick={props.callback}><b>star </b></span> : <span onClick={props.callback}>star </span>
+    return <span onClick={()=> props.callback()}>{props.selected ? <b> star </b> : " star "}</span>
 }

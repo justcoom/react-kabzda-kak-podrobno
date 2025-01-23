@@ -1,39 +1,34 @@
 import './App.css';
-import {Rating} from "./components/Rating/Rating";
+import {Rating, RatingValueType} from "./components/Rating/Rating";
 import Accordion from "./components/accordion/Accordion";
-import {OnOff} from "./components/onOff/OnOff";
+import {UncontrolledOnOff} from "./components/uncontrolledonOff/UncontrolledOnOff";
 import UncontrolledAccordion from "./components/uncontrolledAccordion/UncontrolledAccordion";
 import {UncontrolledRating} from "./components/uncontrolledRating/UncontrolledRating";
+import {useState} from "react";
+import {OnOff} from "./onOff/OnOff";
 
 
 function App() {
     console.log("App rendered")
+
+    const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
+    const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(true)
+    const [onOffValue, setOnOffValue] = useState<boolean>(false)
+
     return (
         <div className={"App"}>
+
+            <Rating value={ratingValue} onClick={setRatingValue}/>
+            <UncontrolledRating/>
+
+            <Accordion titleValue={"Users"} collapsed={accordionCollapsed} onClick={setAccordionCollapsed}/>
+            <UncontrolledAccordion titleValue={"Menu"}/>
+
+            {/*<OnOff state={onOffValue} setOnOff={setOnOffValue}/>*/}
+            <UncontrolledOnOff onChange={setOnOffValue}/> {onOffValue.toString()}
             {/*<PageTitle title={"This is component"}/>*/}
             {/*<PageTitle title={"My friends"}/>*/}
 
-            {/*Article 1*/}
-            {/*<Rating value={0} />*/}
-            {/*<Accordion titleValue={"Menu"} collapsed={false}/>*/}
-            {/*<Accordion titleValue={"Users"} collapsed={true}/>*/}
-
-            {/*Article 2*/}
-            {/*<Rating value={0}/>*/}
-            {/*<Rating value={1}/>*/}
-            {/*<Rating value={2}/>*/}
-            {/*<Rating value={3}/>*/}
-            {/*<Rating value={4}/>*/}
-            {/*<Rating value={5}/>*/}
-
-            <OnOff state={true}/>
-            <OnOff state={false}/>
-
-            <UncontrolledAccordion titleValue={"Menu"}/>
-            <Accordion titleValue={"Users"} collapsed={false}/>
-
-            <UncontrolledRating/>
-            <Rating value={4}/>
         </div>
     );
 }
