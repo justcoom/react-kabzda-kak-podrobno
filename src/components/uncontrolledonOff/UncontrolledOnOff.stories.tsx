@@ -19,7 +19,3 @@ export const OffMode = () => {
 export const BugMode = () => {
     return <div>Uncsync when change defaultValue when already rendered</div>
 }
-
-export const DefaultInputValue = () => {
-    return <input type="text" defaultValue={"yo"} onChange={() => {}}/>
-}

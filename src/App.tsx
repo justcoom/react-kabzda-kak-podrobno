@@ -19,7 +19,7 @@ function App() {
         <div className={"App"}>
 
             <Rating value={ratingValue} onClick={setRatingValue}/>
-            <UncontrolledRating/>
+            <UncontrolledRating onChange={()=>{}}/>
 
             <Accordion titleValue={"Users"} collapsed={accordionCollapsed} onClick={setAccordionCollapsed}/>
             <UncontrolledAccordion titleValue={"Menu"}/>
