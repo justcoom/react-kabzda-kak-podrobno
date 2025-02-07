@@ -1,0 +1,24 @@
+.selectStyle {
+    max-width: 100px;
+    color: white;
+    cursor: pointer;
+}
+
+.valueStyle {
+    background-color: black;
+    border: 2px solid #676565;
+    padding: 7px;
+    border-radius: 5px;
+
+    &:hover {
+        border: 2px solid red;
+    }
+}
+.item {
+    background-color: #676565;
+    padding: 7px;
+    &:hover {
+        background-color: #a4a0a0;
+        text-decoration: 2px underline red;
+    }
+}
