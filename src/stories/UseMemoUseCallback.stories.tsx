@@ -1,4 +1,4 @@
-import {memo, useMemo, useState} from "react";
+import {memo, useCallback, useMemo, useState} from "react";
 import {number} from "prop-types";
 
 
@@ -81,3 +81,53 @@ export const HelpsToReactMemo = () => {
         </>
     )
 }
+
+export const LikeUseCallback = () => {
+    console.log("LikeUseCallback")
+    const [counter, setCounter] = useState(0)
+    const [books, setBooks] = useState(["React", "Js", "HTML"])
+
+    const newArr = useMemo(() => {
+        return books.filter(u => u.toLowerCase().indexOf("a") > -1)
+    }, [books])
+
+    const addBook = useMemo(() => {
+        return () => {
+            const newUsers = [...books, "Angular " + new Date().getTime()]
+            setBooks(newUsers)
+        }
+    }, [books])
+
+    //ТОЖЕ САМОЕ ТОЛЬКО С UseCallback
+
+    const addBook2 = useCallback(() => {
+        const newUsers = [...books, "Angular " + new Date().getTime()]
+        setBooks(newUsers)
+    }, [books])
+
+    return (
+        <>
+            <button onClick={() => setCounter(counter + 1)}>+</button>
+
+            {counter}
+            <Book books={newArr} addBook={addBook}/>
+        </>
+    )
+}
+
+type BooksPropsType = {
+    books: string[]
+    addBook: () => void
+}
+
+export const Books = (props: BooksPropsType) => {
+    console.log("BOOKS")
+    return (
+        <div>
+            <button onClick={() => props.addBook()}>add book</button>
+            {props.books.map((book, i) => <div key={i}>{book}</div>)}
+        </div>
+    )
+}
+
+const Book = memo(Books)
